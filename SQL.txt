@@ -1,0 +1,12 @@
+-- defaultdb.Choices definition
+
+CREATE TABLE "Choices" (
+  "id" int NOT NULL AUTO_INCREMENT,
+  "question_id" int NOT NULL,
+  "label" char(1) NOT NULL,
+  "text" longtext NOT NULL,
+  "is_answer" tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY ("id"),
+  UNIQUE KEY "uq_choice_question_label" ("question_id","label"),
+  CONSTRAINT "fk_choice_question" FOREIGN KEY ("question_id") REFERENCES "Questions" ("id")
+);
